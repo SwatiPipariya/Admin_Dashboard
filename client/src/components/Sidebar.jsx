@@ -102,7 +102,6 @@ const Sidebar = ({
     isNonMobile,
 }) => {
     const { pathName } = useLocation();
-    // const { active, setActive } = useState("");
     const [active, setActive] = useState("");
 
     const navigate = useNavigate();
@@ -158,14 +157,14 @@ const Sidebar = ({
                             {navItems.map(({ text, icon }) => {
                                 if (!icon) {
                                     return (
-                                        <Typography key={text} sx={{ m: "2.25rem 0 1rem 3rem" }}>
+                                        <Typography key={text} sx={{ m: "1rem 0 1rem 2rem" , textAlign: 'left'}}>
                                             {text}
                                         </Typography>
                                     )
                                 }
                                 const lcText = text.toLowerCase();
                                 return (
-                                    <ListItem key={text} disablePadding>
+                                    <ListItem key={text}  sx={{m: "0rem 5rem 0rem rem", textAlign: 'left' }}>
                                         <ListItemButton
                                             onClick={() => {
                                                 navigate(`/${lcText}`);

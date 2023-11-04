@@ -1,4 +1,5 @@
 import React, { useState } from 'react'
+
 import {
   LightModeOutlined,
   DarkModeOutlined,
@@ -11,19 +12,23 @@ import {
 import FlexBetween from './FlexBetween'
 import { useDispatch } from 'react-redux'
 import { setMode } from 'state'
-import profileImage from "assets/profile.jpeg"
+// import profileImage from "assets/profile.jpeg"
 import { AppBar, IconButton, Toolbar, InputBase, useTheme } from '@mui/material'
 
-
-const Navbar = () => {
+const Navbar = ({
+  isSidebarOpen,
+  setIsSidebarOpen,
+}) => {
   const dispatch = useDispatch();
   const theme = useTheme();
-  const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+
+  // const [isSidebarOpen, setIsSidebarOpen] = useState(false);
+  // setIsSidebarOpen()
   // const [anchorEl, setAnchorEl] = useState(null);
   // const isOpen = Boolean(anchorEl);
   // const handleClick = (event) => setAnchorEl(event.currentTarget);
   // const handleClose = () => setAnchorEl(null);
-
+  
   return (
     <AppBar
       sx={{
@@ -36,18 +41,18 @@ const Navbar = () => {
         {/* Left Side */}
         <FlexBetween>
           <IconButton onClick={() => setIsSidebarOpen(!isSidebarOpen)}>
-          {/* <IconButton onClick={() => setIsSidebarOpen(prevState => !prevState)}> */}
+            {/* <IconButton onClick={() => setIsSidebarOpen(prevState => !prevState)}> */}
             <MenuIcon />
           </IconButton>
           <FlexBetween
-            backgroundColor = {theme.palette.background.alt}
+            backgroundColor={theme.palette.background.alt}
             borderRadius="9px"
             gap="3rem"
             p="0.1rem 1.5rem"
           >
             <InputBase placeholder="Search..." />
             <IconButton>
-              <Search/>
+              <Search />
             </IconButton>
           </FlexBetween>
         </FlexBetween>
@@ -55,14 +60,14 @@ const Navbar = () => {
         {/* Right Side */}
         <FlexBetween gap="1.5rem">
           <IconButton onClick={() => dispatch(setMode())}>
-            {theme.palette.mode === 'dark'? (
-              <DarkModeOutlined sx={{ fontSize: "25px"}} />
+            {theme.palette.mode === 'dark' ? (
+              <DarkModeOutlined sx={{ fontSize: "25px" }} />
             ) : (
-              <LightModeOutlined sx={{ fontSize: "25px"}} />
+              <LightModeOutlined sx={{ fontSize: "25px" }} />
             )}
           </IconButton>
           <IconButton >
-            <SettingsOutlined sx={{fontSize: "25px"}} />
+            <SettingsOutlined sx={{ fontSize: "25px" }} />
           </IconButton>
         </FlexBetween>
       </Toolbar>
@@ -71,4 +76,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-
